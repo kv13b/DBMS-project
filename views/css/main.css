@@ -1,0 +1,57 @@
+body {
+  background-color: black;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: white;
+}
+#mainMenu li {
+  padding-left: 20px;
+  padding-top: 10px;
+}
+#mainMenu {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar-container {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+.navbar-container header p {
+  font-size: 25px;
+}
+
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.footer .help p {
+  color: white;
+}
+.footer .about p {
+  color: white;
+}
+.footer .address p {
+  color: white;
+}
+

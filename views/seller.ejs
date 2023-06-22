@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    
+ 
+    <div class="container">
+        <div class="row">
+          <div class="col-12" style="text-align: center;">
+            <h1>Welcome to Badminton Hub</h1>
+          </div>
+        </div>
+        <div style="display:flex;align-items: center;justify-content: center;">
+          <form action="/" style="display: inline;">
+            <button class="btn btn-outline-primary" type="submit" >Back to Home</button>
+          </form>
+            <button class="btn btn-outline-primary" type="submit" style="margin: 10px;" id="add">Add products</button>
+              <form action="/seller/orders" method="get">
+               <button class="btn btn-outline-primary" type="submit" id="view">View Orders</button>
+              </form>
+        </div>
+      </div>
+
+      <div class="container" id="addproducts" style="display: none;">
+        <form action="addproducts" method="post">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Product Name</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="pname">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Product Price</label>
+              <input type="text" class="form-control" id="exampleInputPassword1" name="pprice">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Products Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="pdesc"></textarea>
+              </div>
+              <div class="mt-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+      </div>
+    <div class="container" id="vieworders" style="display:none">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Order ID</th>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Customer ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%if(result.length > 0) { %> <% result.forEach((results, index) => { %>
+              <tr>
+                <td><%= index+1%></td>
+                <td><%= result[index].o_id%></td>
+                <td><%= result[index].p_id%></td>
+                <td><%= result[index].p_name%></td>
+                <td><%= result[index].c_id%></td>
+              </tr>
+              <% }) %> <%} else { %>
+                <p style="color: white; position: relative; left: 90%; top: 20%">
+                  No orders
+                </p>
+                <%} %>
+            </tbody>
+          </table>
+    </div>
+    
+<script>
+document.getElementById('vieworders').style.setProperty('display', '<%= displayOrders%>')
+var div1=document.getElementById("addproducts");
+var div2=document.getElementById("vieworders");
+var bt1=document.getElementById("add");
+var bt2=document.getElementById("view");
+bt1.onclick=function(){
+    div1.style.display="block"
+    div2.style.display="none"
+}
+bt2.onclick=function(){
+    div2.style.display="block"
+    div1.style.display="none"
+}
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    
+  </body>
+</html>
